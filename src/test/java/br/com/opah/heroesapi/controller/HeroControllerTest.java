@@ -1,6 +1,7 @@
 package br.com.opah.heroesapi.controller;
 
 import br.com.opah.heroesapi.builder.domain.HeroDataTestBuilder;
+import br.com.opah.heroesapi.controller.converter.HeroToHeroDetailResourceConverter;
 import br.com.opah.heroesapi.controller.converter.HeroToHeroResourceConverter;
 import br.com.opah.heroesapi.domain.Hero;
 import br.com.opah.heroesapi.usecase.*;
@@ -36,6 +37,8 @@ public class HeroControllerTest {
 
     @Spy
     private HeroToHeroResourceConverter toHeroResourceConverter = new HeroToHeroResourceConverter(new ModelMapper());
+    @Spy
+    private HeroToHeroDetailResourceConverter toHeroDetailResourceConverter = new HeroToHeroDetailResourceConverter(new ModelMapper());
 
     private static final String NOME = "";
     private static final Integer PAGE = 0;
@@ -72,7 +75,7 @@ public class HeroControllerTest {
 
         assertEquals(heroMock.getId(), heroResponse.getId());
         verify(findHeroByIdUseCase, atLeastOnce()).execute(anyInt());
-        verify(toHeroResourceConverter, atLeastOnce()).convert(any(Hero.class));
+        verify(toHeroDetailResourceConverter, atLeastOnce()).convert(any(Hero.class));
     }
 
     @Test

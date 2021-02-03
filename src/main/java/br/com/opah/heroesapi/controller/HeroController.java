@@ -1,6 +1,8 @@
 package br.com.opah.heroesapi.controller;
 
+import br.com.opah.heroesapi.controller.converter.HeroToHeroDetailResourceConverter;
 import br.com.opah.heroesapi.controller.converter.HeroToHeroResourceConverter;
+import br.com.opah.heroesapi.controller.resource.HeroDetailResource;
 import br.com.opah.heroesapi.controller.resource.HeroResource;
 import br.com.opah.heroesapi.usecase.*;
 import io.swagger.annotations.Api;
@@ -22,6 +24,7 @@ public class HeroController {
     private final DisfavorHeroUseCase disfavorHeroUseCase;
 
     private final HeroToHeroResourceConverter toHeroResourceConverter;
+    private final HeroToHeroDetailResourceConverter toHeroDetailResourceConverter;
 
     @GetMapping
     @ApiOperation("Busca paginada de heróis")
@@ -37,9 +40,9 @@ public class HeroController {
 
     @GetMapping(value = "/{id}")
     @ApiOperation("Retorna o Herói do ID solicitado")
-    public HeroResource findHero(@PathVariable("id") Integer id){
+    public HeroDetailResource findHero(@PathVariable("id") Integer id){
 
-        return toHeroResourceConverter.convert(findHeroByIdUseCase.execute(id));
+        return toHeroDetailResourceConverter.convert(findHeroByIdUseCase.execute(id));
     }
 
     @GetMapping(value = "/favorites")

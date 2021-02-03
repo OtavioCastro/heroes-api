@@ -16,8 +16,7 @@ public class HeroResource {
     private Integer id;
     private String nome;
     private Integer idade;
-    private String historia;
+    private String fotoPerfil;
     private Boolean favorito;
-    private List<String> superPoderes;
 
 }

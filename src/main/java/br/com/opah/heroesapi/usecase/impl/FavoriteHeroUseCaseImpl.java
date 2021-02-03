@@ -1,6 +1,5 @@
 package br.com.opah.heroesapi.usecase.impl;
 
-import br.com.opah.heroesapi.domain.FavoriteHeroRequest;
 import br.com.opah.heroesapi.gateway.HeroGateway;
 import br.com.opah.heroesapi.usecase.FavoriteHeroUseCase;
 import lombok.AllArgsConstructor;
